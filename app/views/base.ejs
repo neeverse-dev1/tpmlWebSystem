@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/libs/bootstrap-select/css/bootstrap-select.min.css">
   <!-- end::Edura Required Stylesheet -->
 
+   <%- typeof custom_style_pre !== 'undefined' ? custom_style_pre : '' %>
   <!-- begin::Edura CSS Stylesheet -->
   <link rel="stylesheet" href="/assets/libs/flatpickr/flatpickr.min.css">
   <link rel="stylesheet" href="/assets/libs/datatables/datatables.min.css">
@@ -25,12 +26,13 @@
   <%- include('partials/header') %>
   <%- include('partials/sidebar') %>
   <main>
-    <%- body %>
+    <%- include(page) %>
   </main>
   <%- include('partials/footer') %>
 
   <!-- 템플릿 JS -->
    <!-- begin::Page Scripts -->
+  <%- typeof custom_script_pre !== 'undefined' ? custom_script_pre : '' %>
   <script src="assets/libs/global/global.min.js"></script>
   <script src="assets/js/appSettings.js"></script>
   <script src="assets/js/main.js"></script>

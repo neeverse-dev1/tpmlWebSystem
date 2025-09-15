@@ -14,6 +14,11 @@ app.use(express.json());
 const indexRoutes = require('./app/routes/index');
 app.use('/', indexRoutes);
 
+// 장비 관리
+const equipmentRoutes = require('./app/routes/equipment');
+app.use('/equipment', equipmentRoutes);
+
+
 app.listen(3000, () => {
   console.log('🚀 Server running at http://localhost:3000');
 });
