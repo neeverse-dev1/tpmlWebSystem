@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 템플릿 CSS -->
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <%- typeof custom_style !== 'undefined' ? custom_style : '' %>
+</head>
+<body>
+  <%- include('partials/header') %>
+  <main>
+    <%- body %>
+  </main>
+  <%- include('partials/footer') %>
+
+  <!-- 템플릿 JS -->
+  <script src="/assets/js/main.js"></script>
+  <%- typeof custom_script !== 'undefined' ? custom_script : '' %>
+</body>
+</html>
+
