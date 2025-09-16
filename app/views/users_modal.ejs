@@ -3,15 +3,17 @@
   <div class="modal-dialog">
     <form id="addForm" class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">장비 등록</h5>
+        <h5 class="modal-title">사용자 등록</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-        <input type="text" name="equipment_id" class="form-control mb-2" placeholder="장비 ID" required>
-        <input type="text" name="model_name" class="form-control mb-2" placeholder="모델명">
-        <input type="number" name="voltage" class="form-control mb-2" placeholder="전압">
-        <input type="text" name="signal_strength" class="form-control mb-2" placeholder="신호">
-        <input type="text" name="gps" class="form-control mb-2" placeholder="GPS (lat,long)">
+        <input type="text" name="userid" class="form-control mb-2" placeholder="사용자 ID" required>
+        <input type="text" name="username" class="form-control mb-2" placeholder="이름">
+        <input type="email" name="email" class="form-control mb-2" placeholder="이메일">
+        <input type="password" name="password" class="form-control mb-2" placeholder="비밀번호">
+        <input type="text" name="phone" class="form-control mb-2" placeholder="전화번호">
+        <input type="number" name="expire_time" class="form-control mb-2" placeholder="만료시간(초)">
+        <input type="text" name="img_path" class="form-control mb-2" placeholder="이미지 경로">
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary">등록</button>
@@ -26,15 +28,17 @@
   <div class="modal-dialog">
     <form id="editForm" class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">장비 수정</h5>
+        <h5 class="modal-title">사용자 수정</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-        <input type="hidden" name="equipment_id" id="edit-id">
-        <input type="text" name="model_name" id="edit-model" class="form-control mb-2">
-        <input type="number" name="voltage" id="edit-voltage" class="form-control mb-2">
-        <input type="text" name="signal_strength" id="edit-signal" class="form-control mb-2">
-        <input type="text" name="gps" id="edit-gps" class="form-control mb-2">
+        <input type="hidden" name="userid" id="edit-id">
+        <input type="text" name="username" id="edit-username" class="form-control mb-2">
+        <input type="email" name="email" id="edit-email" class="form-control mb-2">
+        <input type="password" name="password" id="edit-password" class="form-control mb-2">
+        <input type="text" name="phone" id="edit-phone" class="form-control mb-2">
+        <input type="number" name="expire_time" id="edit-expire_time" class="form-control mb-2">
+        <input type="text" name="img_path" id="edit-img_path" class="form-control mb-2">
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary">저장</button>

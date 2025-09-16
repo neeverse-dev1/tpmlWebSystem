@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const usersController = require(__basedir + '/app/controllers/usersController');
 
-router.get('/', usersController.renderEquipmentPage);
+router.get('/', usersController.renderUsersPage);
 
-router.post('/create', usersController.createEquipment);
-router.patch('/update/:id', usersController.updateEquipment);
-router.delete('/delete/:id', usersController.deleteEquipment);
+router.post('/create', usersController.createUser);
+router.patch('/update/:id', usersController.updateUser);
+router.delete('/delete/:id', usersController.deleteUser);
 
 module.exports = router;

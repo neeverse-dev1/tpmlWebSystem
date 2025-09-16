@@ -20,6 +20,8 @@ app.use('/', indexRoutes);
 const equipmentRoutes = require('./app/routes/equipment');
 app.use('/equipment', equipmentRoutes);
 
+const usersRoutes = require('./app/routes/users');
+app.use('/users', usersRoutes);
 // 장비 로그 페이지
 
 const equipmentLogRoutes = require('./app/routes/equipmentLog');

@@ -1,37 +1,23 @@
-#!/bin/bash
+-- 🧹 기존 테이블 제거 (존재 시)
+DROP TABLE IF EXISTS dashboard_grid CASCADE;
+DROP TABLE IF EXISTS equipment_data_log CASCADE;
+DROP TABLE IF EXISTS equipment_sensor_log CASCADE;
+DROP TABLE IF EXISTS alert CASCADE;
+DROP TABLE IF EXISTS logs CASCADE;
+DROP TABLE IF EXISTS equipment CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
 
-# 설정값
-DB_NAME="transport_monitoring"
-DB_USER="transport_user"
-DB_PASS="securepassword"
-DB_HOST="localhost"
-DB_PORT="5432"
+-- 🧑‍🔧 사용자 생성 (이미 있으면 생략 가능)
+CREATE USER transport_user WITH PASSWORD 'securepassword';
 
-echo "🚀 PostgreSQL DB 초기화 시작..."
+-- 🗃️ 데이터베이스 생성
+CREATE DATABASE transport_monitoring OWNER transport_user;
 
-# 1. 기존 DB 삭제
-echo "🔍 기존 데이터베이스 존재 여부 확인..."
-DB_EXISTS=$(psql -U postgres -tAc "SELECT 1 FROM pg_database WHERE datname = '$DB_NAME'")
-if [ "$DB_EXISTS" = "1" ]; then
-  echo "⚠️ 기존 데이터베이스 '$DB_NAME' 삭제 중..."
-  psql -U postgres -c "DROP DATABASE $DB_NAME;"
-fi
+-- 🛠️ transport_user에게 권한 부여
+GRANT ALL PRIVILEGES ON DATABASE transport_monitoring TO transport_user;
 
-# 2. 사용자 생성 (존재하지 않을 경우)
-echo "🔍 사용자 존재 여부 확인..."
-USER_EXISTS=$(psql -U postgres -tAc "SELECT 1 FROM pg_roles WHERE rolname = '$DB_USER'")
-if [ "$USER_EXISTS" != "1" ]; then
-  echo "👤 사용자 '$DB_USER' 생성 중..."
-  psql -U postgres -c "CREATE USER $DB_USER WITH PASSWORD '$DB_PASS';"
-fi
-
-# 3. 새 데이터베이스 생성
-echo "🆕 데이터베이스 '$DB_NAME' 생성 중..."
-psql -U postgres -c "CREATE DATABASE $DB_NAME OWNER $DB_USER;"
-
-# 4. 테이블 생성
-echo "📦 테이블 생성 중..."
-psql -U $DB_USER -d $DB_NAME <<EOF
+-- 🧭 transport_monitoring DB에 접속 후 실행할 테이블 생성 스크립트
+-- 아래는 transport_monitoring DB 안에서 실행됨
 
 -- 👤 users
 CREATE TABLE users (
@@ -54,7 +40,6 @@ CREATE TABLE equipment (
   model_name VARCHAR(100),
   gps_lat FLOAT,
   gps_long FLOAT,
-  etc VARCHAR(100),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -108,7 +93,9 @@ CREATE TABLE dashboard_grid (
 INSERT INTO users (userid, username, email, password, role)
 VALUES ('admin', '관리자', 'admin@example.com', '123456', 'admin');
 
-EOF
-
-echo "✅ 초기화 완료: 데이터베이스 '$DB_NAME' 및 테이블 생성 완료"
-
+-- 🌱 dashboard_grid 초기값 4개 등록
+INSERT INTO dashboard_grid (grid_index, equipment_id, view_type, title) VALUES
+(0, 'eq0', 'status', '서버 상태'),
+(1, 'eq1', 'equipment', '장비 EQ-1'),
+(2, 'eq2', 'equipment', '장비 EQ-2'),
+(3, 'eq3', 'equipment', '장비 EQ-3');

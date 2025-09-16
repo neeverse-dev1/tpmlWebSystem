@@ -2,25 +2,26 @@ const ejs = require('ejs');
 const path = require('path');
 const usersService = require(__basedir + '/app/services/usersService');
 
-exports.renderUserPage = async (req, res) => {
-  const usersList = await usersService.getAll();
+exports.renderUsersPage = async (req, res) => {
+  try {
+    const usersList = await usersService.getAll() || [];
     res.render('base', {
-        title: '사용자 관리',
-        page: 'equipment',
-        usersList,
-        custom_style_pre: `
-        `,
-        custom_style: `
+      title: '사용자 관리',
+      page: 'users',
+      usersList,
+      custom_style: `
         <link rel="stylesheet" href="/assets/libs/datatables/datatables.min.css">
-        `,
-        custom_script_pre: `
-        `,
-        custom_script: `
+      `,
+      custom_script: `
         <script src="/assets/libs/datatables/datatables.min.js"></script>
         <script src="/assets/js/datatable.js"></script>
-        <script src="/js/equipment-ui.js"></script>
-        `
+        <script src="/js/users-ui.js"></script>
+      `
     });
+  } catch (err) {
+    console.error('❌ 사용자 페이지 렌더링 실패:', err);
+    res.status(500).send('사용자 페이지를 불러올 수 없습니다.');
+  }
 };
 
 exports.createUser = async (req, res) => {

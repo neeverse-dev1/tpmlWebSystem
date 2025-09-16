@@ -1,0 +1,67 @@
+<div class="col-lg-8">
+  <div class="card overflow-hidden">
+    <div class="card-header d-flex align-items-center justify-content-between">
+      <h6 class="card-title mb-0">사용자 목록</h6>
+      <button class="btn btn-sm btn-primary mb-3 text-dark" id="addBtn"> + 사용자 등록</button>
+    </div>
+    <div class="card-body p-0 pb-2">
+      <table id="usersTable" class="table table-striped table-hover table-bordered display">
+        <thead class="table-dark">
+          <tr>
+            <th>사용자ID</th>
+            <th>사용자이름</th>
+            <th>이메일</th>
+            <th>만료시간(초)</th>
+            <th>액션</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% usersList.forEach(user => { %>
+          <tr class="user-row"
+              data-id="<%= user.userid %>"
+              data-username="<%= user.username %>"
+              data-email="<%= user.email %>"
+              data-phone="<%= user.phone %>"
+              data-expire_time="<%= user.expire_time %>"
+              data-img_path="<%= user.img_path %>">
+            <td><%= user.userid %></td>
+            <td><%= user.username %></td>
+            <td><%= user.email %></td>
+            <td><%= user.expire_time %></td>
+            <td>
+              <button class="btn btn-sm btn-warning text-dark edit-btn"
+                  data-id="<%= user.userid %>"
+                  data-username="<%= user.username %>"
+                  data-email="<%= user.email %>"
+                  data-password="<%= user.password %>"
+                  data-phone="<%= user.phone %>"
+                  data-expire_time="<%= user.expire_time %>"
+                  data-img_path="<%= user.img_path %>">수정</button>
+              <button class="btn btn-sm btn-danger text-dark delete-btn" data-id="<%= user.userid %>">삭제</button>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="col-4">
+  <div class="card overflow-hidden">
+    <div class="card-header d-flex align-items-center justify-content-between">
+      <h6 class="card-title mb-0">사용자 상세 내용</h6>
+    </div>
+    <table class="table table-bordered table-striped mt-3">
+      <tbody>
+        <tr><th>ID</th><td id="detail-id">-</td></tr>
+        <tr><th>이름</th><td id="detail-model">-</td></tr>
+        <tr><th>이메일</th><td id="detail-voltage">-</td></tr>
+        <tr><th>전화번호</th><td id="detail-signal">-</td></tr>
+        <tr><th>만료시간</th><td id="detail-gps">-</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('users_modal') %>

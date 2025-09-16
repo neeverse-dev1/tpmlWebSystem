@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $('#equipmentTable').DataTable({
+  $('#usersTable').DataTable({
     language: {
       search: "검색:",
       lengthMenu: "_MENU_",
@@ -12,65 +12,37 @@ $(document).ready(function () {
       },
       zeroRecords: "일치하는 항목 없음"
     },
-    "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ],
-    "order": [[0, 'desc']], // Sorts the first column (index 0) in ascending order
-    "pageLength": 10// Show 50 records per page initially
+    lengthMenu: [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ],
+    order: [[0, 'desc']],
+    pageLength: 10
   });
 
-  const mapContainer = document.getElementById('map');
-  if (!mapContainer) return; // 없으면 실행 안 함
-
-  const map = L.map('map').setView([37.5665, 126.9780], 13);
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap'
-  }).addTo(map);
-
-$('.equipment-row').on('click', function () {
-  const latlong = $(this).data('gps').split(',');
-  const lat = parseFloat(latlong[0]);
-  const lng = parseFloat(latlong[1]);
-
-  L.marker([lat, lng]).addTo(map)
-    .bindPopup(`장비 위치: ${lat}, ${lng}`)
-    .openPopup();
-
-  map.setView([lat, lng], 15);
-});
-
-  $('.equipment-row').on('click', function () {
+  $('.user-row').on('click', function () {
     $('#detail-id').text($(this).data('id'));
-    $('#detail-model').text($(this).data('model'));
-    $('#detail-voltage').text($(this).data('voltage') + 'V');
-    $('#detail-signal').text($(this).data('signal'));
-    $('#detail-gps').text($(this).data('gps'));
+    $('#detail-model').text($(this).data('username'));
+    $('#detail-voltage').text($(this).data('email'));
+    $('#detail-signal').text($(this).data('phone'));
+    $('#detail-gps').text($(this).data('expire_time'));
   });
-
-});
-
-$(function () {
-  // 등록 모달 열기
 
   $('#addBtn').on('click', function () {
-    // const newId = 'EQ-' + Date.now(); // 자동생성 예시
-    // $('#addModal input[name="equipment_id"]').val(newId);
     const modal = new bootstrap.Modal(document.getElementById('addModal'));
     modal.show();
   });
 
-  // 수정 모달 열기
   $('.edit-btn').on('click', function () {
     $('#edit-id').val($(this).data('id'));
-    $('#edit-model').val($(this).data('model'));
-    $('#edit-voltage').val($(this).data('voltage'));
-    $('#edit-signal').val($(this).data('signal'));
-    $('#edit-gps').val($(this).data('gps'));
+    $('#edit-username').val($(this).data('username'));
+    $('#edit-email').val($(this).data('email'));
+    $('#edit-password').val($(this).data('password'));
+    $('#edit-phone').val($(this).data('phone'));
+    $('#edit-expire_time').val($(this).data('expire_time'));
+    $('#edit-img_path').val($(this).data('img_path'));
 
     const modal = new bootstrap.Modal(document.getElementById('editModal'));
     modal.show();
   });
 
-  // 삭제 모달 열기
   let deleteId = null;
   $('.delete-btn').on('click', function () {
     deleteId = $(this).data('id');
@@ -78,9 +50,8 @@ $(function () {
     modal.show();
   });
 
-  // 삭제 확정
   $('#confirmDelete').on('click', function () {
-    fetch(`/equipment/delete/${deleteId}`, { method: 'DELETE' })
+    fetch(`/users/delete/${deleteId}`, { method: 'DELETE' })
       .then(res => res.json())
       .then(data => {
         if (data.success) location.reload();
@@ -88,11 +59,10 @@ $(function () {
       });
   });
 
-  // 등록 처리
   $('#addForm').on('submit', function (e) {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(this));
-    fetch('/equipment/create', {
+    fetch('/users/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
@@ -103,11 +73,10 @@ $(function () {
       });
   });
 
-  // 수정 처리
   $('#editForm').on('submit', function (e) {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(this));
-    fetch(`/equipment/update/${formData.equipment_id}`, {
+    fetch(`/users/update/${formData.userid}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
