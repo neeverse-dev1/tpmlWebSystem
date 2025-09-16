@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <title><%= title %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- 템플릿 CSS -->
-  <link rel="stylesheet" href="/assets/css/styles.css">
   <!-- begin::Edura Required Stylesheet -->
   <link rel="stylesheet" href="/assets/libs/flaticon/css/all/all.css">
   <link rel="stylesheet" href="/assets/libs/lucide/lucide.css">
@@ -18,24 +16,37 @@
    <%- typeof custom_style_pre !== 'undefined' ? custom_style_pre : '' %>
   <!-- begin::Edura CSS Stylesheet -->
   <link rel="stylesheet" href="/assets/libs/flatpickr/flatpickr.min.css">
-  <link rel="stylesheet" href="/assets/libs/datatables/datatables.min.css">
   <link rel="stylesheet" href="/assets/css/styles.css">
   <%- typeof custom_style !== 'undefined' ? custom_style : '' %>
 </head>
 <body>
+  <div class="page-layout">
   <%- include('partials/header') %>
   <%- include('partials/sidebar') %>
-  <main>
-    <%- include(page) %>
+  <main class="app-wrapper">
+    <div class="container-fluid">
+      <!--
+      <div class="app-page-head d-flex flex-wrap gap-3 align-items-center justify-content-between">
+        <div class="clearfix">
+          <h1 class="app-page-title">Dashboard</h1>
+        </div>
+      </div>
+      -->
+      <div class="row">
+      <%- include(page) %>
+      </div>
+    </div>
   </main>
+
   <%- include('partials/footer') %>
+ </div>
 
   <!-- 템플릿 JS -->
    <!-- begin::Page Scripts -->
   <%- typeof custom_script_pre !== 'undefined' ? custom_script_pre : '' %>
-  <script src="assets/libs/global/global.min.js"></script>
-  <script src="assets/js/appSettings.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="/assets/libs/global/global.min.js"></script>
+  <script src="/assets/js/appSettings.js"></script>
+  <script src="/assets/js/main.js"></script>
   <!-- end::Page Scripts -->
   <%- typeof custom_script !== 'undefined' ? custom_script : '' %>
 </body>

@@ -1,0 +1,33 @@
+<div class="col-lg-12">
+  <div class="card overflow-hidden">
+    <div class="card-header d-flex align-items-center justify-content-between">
+      <h6 class="card-title mb-0">장비 로그</h6>
+    </div>
+    <div class="card-body p-0 pb-2">
+      <table id="logTable" class="table table-striped table-bordered table-hover display">
+        <thead class="table-dark">
+          <tr>
+            <th class="minw-200px">시간</th>
+            <th class="minw-150px">장비</th>
+            <th class="minw-200px">온도</th>
+            <th class="minw-150px">습도</th>
+            <th class="minw-150px">압력</th>
+            <th class="minw-150px">GPS</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% logList.forEach(log => { %>
+          <tr>
+            <td><%= new Date(log.created_at).toLocaleString() %></td>
+            <td><%= log.model_name %></td>
+            <td><%= log.temperature %>°C</td>
+            <td><%= log.humidity %>%</td>
+            <td><%= log.pressure %> hPa</td>
+            <td><%= log.gps_lat %>, <%= log.gps_long %></td>
+          </tr>
+        <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

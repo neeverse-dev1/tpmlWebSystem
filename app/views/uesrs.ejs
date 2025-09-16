@@ -16,7 +16,7 @@
             </tr>
           </thead>
           <tbody>
-            <% equipmentList.forEach(eq => { %>
+            <% usersList.forEach(eq => { %>
             <tr class="equipment-row" data-id="<%= eq.equipment_id %>" data-model="<%= eq.model_name %>" data-voltage="<%= eq.voltage %>" data-signal="<%= eq.signal_strength %>" data-gps="<%= eq.gps_lat %>, <%= eq.gps_long %>">
               <td><%= eq.equipment_id %></td>
               <td><%= eq.model_name %></td>
@@ -57,5 +57,5 @@
     </div>
   </div>
 
-<%- include('equipment_modal') %>
+<%- include('users_modal') %>
 

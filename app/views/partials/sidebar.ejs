@@ -1,56 +1,65 @@
 <!-- app/views/partials/header.ejs -->
     <aside class="app-menubar" id="menubar">
       <div class="app-navbar-brand">
-        <a class="navbar-brand-logo" href="index.html">
-          <img src="assets/images/logo.svg" alt="logo">
+        <a class="navbar-brand-logo" href="/">
+          <!--<img src="/assets/images/logo.svg" alt="logo">-->
+          <img src="/images/tmlsw_logo.png" width="45" height="45" alt="logo">
         </a>
-        <a class="navbar-brand-mini" href="index.html">
-          <img src="assets/images/logo-text-white.svg" alt="logo">
+        <a class="navbar-brand-mini" href="/">
+          <!--<img src="/assets/images/logo-text-white.svg" alt="logo">-->
+          <h6 class="text-light">Transport Module Location System</h6>
         </a>
       </div>
       <nav class="app-navbar" data-simplebar>
         <ul class="menubar">
           <li class="menu-item">
             <a class="menu-link" href="/">
-              <i class="fi fi-rr-comment"></i>
+              <i class="fi fi-rr-apps"></i>
               <span class="menu-label">대시보드</span>
             </a>
           </li>
           <li class="menu-item">
-            <a class="menu-link" href="/equipment">
-              <i class="fi fi-rr-comment"></i>
+            <a class="menu-link" href="/equipment/">
+              <i class="fi fi-rr-wifi"></i>
               <span class="menu-label">장비 목록</span>
             </a>
           </li>
           <li class="menu-item">
-            <a class="menu-link" href="/users">
-              <i class="fi fi-rr-calendar"></i>
+            <a class="menu-link" href="/users/">
+              <i class="fi fi-rr-user"></i>
               <span class="menu-label">사용자관리</span>
             </a>
           </li>
           <li class="menu-heading">
-            <span class="menu-label">로그 곤리</span>
+            <span class="menu-label">management</span>
           </li>
           <li class="menu-item">
-            <a class="menu-link" href="/equipment-log">
-              <i class="fi fi-rs-badget-check-alt"></i>
+            <a class="menu-link" href="/equipment/log/">
+              <i class="fi fi-rs-database"></i>
               <span class="menu-label">장비 로그</span>
-              <span class="badge badge-sm rounded-pill bg-secondary ms-2 float-end">5</span>
+              <!--<span class="badge badge-sm rounded-pill bg-secondary ms-2 float-end">5</span>-->
             </a>
           </li>
           <li class="menu-item">
-            <a class="menu-link" href="/logs">
-              <i class="fi fi-rs-badget-check-alt"></i>
+            <a class="menu-link" href="/users/log/">
+              <i class="fi fi-rr-users"></i>
               <span class="menu-label">사용자 로그</span>
-              <span class="badge badge-sm rounded-pill bg-secondary ms-2 float-end">5</span>
+              <!--<span class="badge badge-sm rounded-pill bg-secondary ms-2 float-end">5</span>-->
+            </a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="/status/">
+              <i class="fi fi-rs-laptop"></i>
+              <span class="menu-label">서버 정보</span>
+              <!--<span class="badge badge-sm rounded-pill bg-secondary ms-2 float-end">5</span>-->
             </a>
           </li>
         </ul>
       </nav>
       <div class="app-footer">
-        <a href="pages/faq.html" class="btn btn-outline-white waves-effect btn-app-nav w-100">
-          <i class="fi fi-rs-interrogation"></i>
-          <span class="nav-text">Help and Support</span>
+        <a href="#" class="btn btn-outline-white waves-effect btn-app-nav w-100">
+          <i class="fi fi-rs-building"></i>
+          <span class="nav-text"> 2025 &copy Neever-Lec</span>
         </a>
       </div>
     </aside>

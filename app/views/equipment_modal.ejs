@@ -1,0 +1,64 @@
+<!-- 등록 모달 -->
+<div class="modal fade" id="addModal" tabindex="-1">
+  <div class="modal-dialog">
+    <form id="addForm" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">장비 등록</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" name="equipment_id" class="form-control mb-2" placeholder="장비 ID" required>
+        <input type="text" name="model_name" class="form-control mb-2" placeholder="모델명">
+        <input type="number" name="voltage" class="form-control mb-2" placeholder="전압">
+        <input type="text" name="signal_strength" class="form-control mb-2" placeholder="신호">
+        <input type="text" name="gps" class="form-control mb-2" placeholder="GPS (lat,long)">
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">등록</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- 수정 모달 -->
+<div class="modal fade" id="editModal" tabindex="-1">
+  <div class="modal-dialog">
+    <form id="editForm" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">장비 수정</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" name="equipment_id" id="edit-id">
+        <input type="text" name="model_name" id="edit-model" class="form-control mb-2">
+        <input type="number" name="voltage" id="edit-voltage" class="form-control mb-2">
+        <input type="text" name="signal_strength" id="edit-signal" class="form-control mb-2">
+        <input type="text" name="gps" id="edit-gps" class="form-control mb-2">
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">저장</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- 삭제 모달 -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">삭제 확인</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>정말 삭제하시겠습니까?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" id="confirmDelete">삭제</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+      </div>
+    </div>
+  </div>
+</div>
