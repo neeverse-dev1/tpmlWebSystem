@@ -105,13 +105,19 @@ CREATE TABLE dashboard_grid (
   equipment_id VARCHAR(50),
   view_type VARCHAR(20),
   title VARCHAR(100),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (equipment_id) REFERENCES equipment(equipment_id)
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- 🌱 기본 사용자 등록
 INSERT INTO users (userid, username, email, password, role)
 VALUES ('admin', '관리자', 'admin@example.com', '123456', 'admin');
+
+-- 🌱 기본 Grid 등록
+INSERT INTO dashboard_grid (grid_index, view_type) VALUES
+(0, 'equipment'),
+(1, 'equipment'),
+(2, 'equipment'),
+(3, 'equipment');
 
 EOF
 
