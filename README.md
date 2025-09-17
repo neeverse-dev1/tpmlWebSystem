@@ -16,6 +16,14 @@ node -v
 npm -v
 ```
 
+### 2. PostgreSQL 설치
+
+- PostgreSQL 공식 사이트에서 설치
+
+- 설치 시 사용자 계정 및 포트 확인 (기본: 5432)
+
+- pgAdmin 또는 CLI로 DB 생성
+
 ## 📦 프로젝트 설치
 
 1. 의존성 설치
@@ -46,9 +54,11 @@ DB_NAME=transport_monitoring
 ```
 
 ## 🛠️ DB 초기화
+
 초기 테이블 및 샘플 데이터 생성은 init_db.sh를 통해 자동화됩니다.
 
 ```bash
+cd db
 ./init_db.sh
 ```
 
@@ -59,5 +69,10 @@ DB_NAME=transport_monitoring
 
 ```bash
 npm start
+
+or
+
+nodemon server.js
 ```
+
 - 서버가 http://localhost:3000 에서 실행됩니다.
