@@ -12,7 +12,7 @@ DB_PORT="5432"
 echo "🚀 PostgreSQL DB 초기화 시작..."
 
 # 환경 변수 설정 (Ubuntu에서 비밀번호 자동 입력용)
-export PGPASSWORD="postgres비밀번호"  # 여기에 실제 postgres 비번 입력
+export PGPASSWORD="toor"  # 여기에 실제 postgres 비번 입력
 
 # 1. 기존 DB 삭제
 echo "🔍 기존 데이터베이스 존재 여부 확인..."
