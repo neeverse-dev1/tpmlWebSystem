@@ -57,8 +57,10 @@ DB_NAME=transport_monitoring
 
 초기 테이블 및 샘플 데이터 생성은 init_db.sh를 통해 자동화됩니다.
 
+DB_USER, DB_PASSWORD, DB_NAME, DB_PORT 이 변경되면 .env 변경 필요
+
 ```bash
-cd db
+cd d요요
 ./init_db.sh
 ```
 
