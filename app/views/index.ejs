@@ -20,10 +20,78 @@
 
           <% if (grid.view_type === 'status') { %>
             <!-- 서버 상태 카드 -->
-            <p class="card-text">서버 상태: 정상</p>
-            <p class="card-text">CPU: 23%</p>
-            <p class="card-text">RAM: 3.2GB / 8GB</p>
-            <p class="card-text">네트워크: 12Mbps</p>
+             <div class="row">
+
+            <div class="col-6">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <h5 class="card-title">서버 상태</h5>
+
+                  <div class="mb-2">
+                    <div class="d-flex justify-content-between">
+                      <span>CPU 사용률</span>
+                      <span id="cpuValue" class="fw-bold text-danger">0%</span>
+                    </div>
+                    <div class="progress" style="height: 6px;">
+                      <div id="cpuBar" class="progress-bar bg-danger" style="width: 0%"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-2">
+                    <div class="d-flex justify-content-between">
+                      <span>RAM</span>
+                      <span id="ramValue" class="fw-bold text-primary">0GB</span>
+                    </div>
+                    <div class="progress" style="height: 6px;">
+                      <div id="ramBar" class="progress-bar bg-primary" style="width: 0%"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-2">
+                    <div class="d-flex justify-content-between">
+                      <span>디스크</span>
+                      <span id="diskValue" class="fw-bold text-success">0 GB</span>
+                    </div>
+                    <div class="progress" style="height: 6px;">
+                      <div id="diskBar" class="progress-bar bg-success" style="width: 0%"></div>
+                    </div>
+                  </div>
+
+                  <div class="mt-2 text-muted small">
+                    네트워크 : <span id="netValue"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <h5 class="card-title">서버 정보</h5>
+
+                  <table class="table table-sm mb-0">
+                    <tbody>
+                      <tr>
+                        <th scope="row">내부 IP</th>
+                        <td id="localIp">0.0.0.0</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Node Version</th>
+                        <td id="nodeVersion">v0.0.0</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Uptime</th>
+                        <td id="uptime">0</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">서버 시작</th>
+                        <td id="startedAt">0000-00-00 00:00:00</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <% } else if (grid.view_type === 'equipment') { %>
             <!-- 장비 카드 -->

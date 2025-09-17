@@ -2,7 +2,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('gridList:', window.gridList); // ✅ 확인용
   if (!window.gridList) return;
-
+    
+    loadServerStatus();
+    setInterval(loadServerStatus, 2000); // ✅ 2초마다 갱신
   gridList.forEach(grid => {
     if (grid.view_type === 'equipment') {
       renderEquipmentCard(grid);
@@ -42,3 +44,27 @@ function renderEquipmentCard(grid) {
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
   L.marker([37.5665, 126.9780]).addTo(map).bindPopup(`장비 위치: ${grid.equipment_id}`);
 }
+
+
+async function loadServerStatus() {
+  const res = await fetch('/api/server/status');
+  const result = await res.json();
+  if (!result.success) return;
+
+  const s = result.data;
+  document.getElementById('cpuValue').textContent = `${s.cpu}%`;
+  document.getElementById('ramValue').textContent = `${s.ram_used} / ${s.ram_total} GB`;
+  document.getElementById('diskValue').textContent = `${s.disk_used} / ${s.disk_total} GB`;
+  document.getElementById('netValue').textContent = `업 ${s.net_up} / 다운 ${s.net_down} Mbps`;
+
+  document.getElementById('localIp').textContent = s.local_ip;
+  document.getElementById('nodeVersion').textContent = s.node_version;
+  document.getElementById('uptime').textContent = s.uptime;
+  document.getElementById('startedAt').textContent = s.started_at;
+
+  document.getElementById('cpuBar').style.width = `${s.cpu}%`;
+  document.getElementById('ramBar').style.width = `${s.ram_percent}%`;
+  document.getElementById('diskBar').style.width = `${s.disk_percent}%`;
+}
+
+
