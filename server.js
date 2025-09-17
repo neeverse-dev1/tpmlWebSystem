@@ -40,6 +40,8 @@ app.use('/api/dashboard', require('./app/api/dashboard-grid'));
 app.use('/api/server', require('./app/api/server'));
 app.use('/api/equipment', require('./app/api/equipmentData'));
 app.use('/api/status', require('./app/routes/status'));
+app.use('/api/equipment', require('./app/api/equipment'));
+
 
 
 app.listen(3000, '0.0.0.0', () => {
