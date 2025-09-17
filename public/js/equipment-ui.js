@@ -38,13 +38,14 @@ $('.equipment-row').on('click', function () {
   map.setView([lat, lng], 15);
 });
 
-  $('.equipment-row').on('click', function () {
-    $('#detail-id').text($(this).data('id'));
-    $('#detail-model').text($(this).data('model'));
-    $('#detail-voltage').text($(this).data('voltage') + 'V');
-    $('#detail-signal').text($(this).data('signal'));
-    $('#detail-gps').text($(this).data('gps'));
-  });
+$('.equipment-row').on('click', function () {
+  $('#detail-id').text($(this).data('id'));
+  $('#detail-model').text($(this).data('model'));
+  $('#detail-gps').text($(this).data('gps'));
+  $('#detail-etc').text($(this).data('etc'));
+  $('#detail-created_at').text($(this).data('created'));
+  $('#detail-updated_at').text($(this).data('updated'));
+});
 
 });
 
@@ -62,8 +63,7 @@ $(function () {
   $('.edit-btn').on('click', function () {
     $('#edit-id').val($(this).data('id'));
     $('#edit-model').val($(this).data('model'));
-    $('#edit-voltage').val($(this).data('voltage'));
-    $('#edit-signal').val($(this).data('signal'));
+    $('#edit-etc').val($(this).data('etc'));
     $('#edit-gps').val($(this).data('gps'));
 
     const modal = new bootstrap.Modal(document.getElementById('editModal'));

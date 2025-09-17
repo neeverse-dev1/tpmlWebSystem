@@ -10,27 +10,30 @@
             <tr>
               <th>ID</th>
               <th>모델명</th>
-              <th>전압</th>
-              <th>신호</th>
-              <th>액션</th>
+              <th>생성날짜</th>
+              <th>작업</th>
             </tr>
           </thead>
           <tbody>
             <% equipmentList.forEach(eq => { %>
-            <tr class="equipment-row" data-id="<%= eq.equipment_id %>" data-model="<%= eq.model_name %>" data-voltage="<%= eq.voltage %>" data-signal="<%= eq.signal_strength %>" data-gps="<%= eq.gps_lat %>, <%= eq.gps_long %>">
+            <tr class="equipment-row"
+                data-id="<%= eq.equipment_id %>"
+                data-model="<%= eq.model_name %>"
+                data-gps="<%= eq.gps_lat %>, <%= eq.gps_long %>"
+                data-etc="<%= eq.etc %>"
+                data-created="<%= eq.created_at %>"
+                data-updated="<%= eq.updated_at %>">
               <td><%= eq.equipment_id %></td>
               <td><%= eq.model_name %></td>
-              <td><%= eq.voltage %>V</td>
-              <td><%= eq.signal_strength %></td>
+              <td><%= eq.created_at %></td>
               <td>
                 <button class="btn btn-sm btn-warning text-dark edit-btn"
                     data-id="<%= eq.equipment_id %>"
                     data-model="<%= eq.model_name %>"
-                    data-voltage="<%= eq.voltage %>"
-                    data-signal="<%= eq.signal_strength %>"
-                    data-gps="<%= eq.gps_lat %>, <%= eq.gps_long %>">수정</button>
+                    data-gps="<%= eq.gps_lat %>, <%= eq.gps_long %>"
+                    data-etc="<%= eq.etc %>">수정</button>
                 <button class="btn btn-sm btn-danger text-dark delete-btn" data-id="<%= eq.equipment_id %>">삭제</button>
-                </td>
+              </td>
             </tr>
             <% }) %>
           </tbody>
@@ -49,9 +52,10 @@
         <tbody>
             <tr><th>ID</th><td id="detail-id">-</td></tr>
             <tr><th>모델명</th><td id="detail-model">-</td></tr>
-            <tr><th>전압</th><td id="detail-voltage">-</td></tr>
-            <tr><th>신호</th><td id="detail-signal">-</td></tr>
             <tr><th>GPS</th><td id="detail-gps">-</td></tr>
+            <tr><th>기타</th><td id="detail-etc">-</td></tr>
+            <tr><th>생성일</th><td id="detail-created_at">-</td></tr>
+            <tr><th>수정일</th><td id="detail-updated_at">-</td></tr>
         </tbody>
       </table>
     </div>

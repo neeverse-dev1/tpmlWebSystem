@@ -10,20 +10,20 @@ const getById = async (id) => {
 };
 
 const create = async (data) => {
-  const { equipment_id, model_name, voltage, signal_strength, gps } = data;
+  const { equipment_id, model_name, etc, gps } = data;
   const [lat, long] = gps.split(',');
   return db.query(
-    'INSERT INTO equipment (equipment_id, model_name, voltage, signal_strength, gps_lat, gps_long) VALUES ($1, $2, $3, $4, $5, $6)',
-    [equipment_id, model_name, voltage, signal_strength, lat, long]
+    'INSERT INTO equipment (equipment_id, model_name, etc, gps_lat, gps_long) VALUES ($1, $2, $3, $4, $5)',
+    [equipment_id, model_name, etc, lat, long]
   );
 };
 
 const update = async (id, data) => {
-  const { model_name, voltage, signal_strength, gps } = data;
+  const { model_name, etc, gps } = data;
   const [lat, long] = gps.split(',');
   return db.query(
-    'UPDATE equipment SET model_name = $1, voltage = $2, signal_strength = $3, gps_lat = $4, gps_long = $5 WHERE equipment_id = $6',
-    [model_name, voltage, signal_strength, lat, long, id]
+    'UPDATE equipment SET model_name = $1, etc = $2, gps_lat = $3, gps_long = $4 WHERE equipment_id = $5',
+    [model_name, etc, lat, long, id]
   );
 };
 

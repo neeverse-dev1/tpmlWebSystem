@@ -1,16 +1,27 @@
-const ejs = require('ejs');
-const path = require('path');
+const dayjs = require('dayjs');
 const equipmentService = require(__basedir + '/app/services/equipmentService');
 
 exports.renderEquipmentPage = async (req, res) => {
   const equipmentList = await equipmentService.getAll();
 
+  // 날짜 포맷 적용
+  const formattedList = equipmentList.map(eq => {
+    return {
+      equipment_id: eq.equipment_id,
+      model_name: eq.model_name,
+      gps_lat: eq.gps_lat,
+      gps_long: eq.gps_long,
+      etc: eq.etc,
+      created_at: dayjs(eq.created_at).format('YYYY-MM-DD HH:mm:ss'),
+      updated_at: dayjs(eq.updated_at).format('YYYY-MM-DD HH:mm:ss')
+    };
+  });
+
   res.render('base', {
     title: '장비 관리',
     page: 'equipment',
-    equipmentList,
-    custom_style_pre: `
-    `,
+    equipmentList: formattedList,
+    custom_style_pre: ``,
     custom_style: `
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
       <link rel="stylesheet" href="/assets/libs/datatables/datatables.min.css">
