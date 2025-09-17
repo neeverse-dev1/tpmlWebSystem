@@ -60,12 +60,24 @@ DB_NAME=transport_monitoring
 DB_USER, DB_PASSWORD, DB_NAME, DB_PORT 이 변경되면 .env 변경 필요
 
 ```bash
-cd d요요
+cd db
 ./init_db.sh
 ```
 
 - PostgreSQL CLI (psql)가 PATH에 등록되어 있어야 합니다. 
 - 실행 전 .env에 DB 정보가 정확히 입력되어 있어야 합니다.
+
+## 📄 Git Bash 설치 및 사용 권장 안내
+
+### 🛠️ Git Bash 설치 방법
+
+1. Git 공식 사이트 접속
+
+2. Windows 버전 다운로드 및 설치
+
+3. 설치 중 옵션은 기본값으로 진행해도 무방
+
+4. 설치 완료 후 바탕화면 또는 시작 메뉴에서 Git Bash 실행
 
 ## 🚀 실행
 
@@ -78,3 +90,9 @@ nodemon server.js
 ```
 
 - 서버가 http://localhost:3000 에서 실행됩니다.
+
+## 📢 요청 사항
+
+본 프로젝트는 Windows 환경에서도 Git Bash를 기준으로 개발되었습니다. 
+.sh 스크립트 및 환경 설정이 Git Bash에 최적화되어 있으므로 
+가능한 모든 명령어 실행은 Git Bash에서 진행해주시기 바랍니다.
