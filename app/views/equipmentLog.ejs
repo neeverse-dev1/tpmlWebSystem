@@ -1,33 +1,74 @@
-<div class="col-lg-12">
-  <div class="card overflow-hidden">
-    <div class="card-header d-flex align-items-center justify-content-between">
-      <h6 class="card-title mb-0">장비 로그</h6>
+<div class="row">
+  <!-- 로그 테이블 영역 -->
+  <div class="col-lg-9">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h6 class="mb-0">장비 로그</h6>
+        <select id="equipmentFilter" class="form-select form-select-sm w-auto">
+          <option value="">전체</option>
+          <% equipmentList.forEach(eq => { %>
+            <option value="<%= eq.equipment_id %>"><%= eq.equipment_id %></option>
+          <% }) %>
+        </select>
+      </div>
+      <div class="card-body p-0">
+        <table id="logTable" class="table table-hover table-bordered mb-0">
+          <thead class="table-dark">
+            <tr>
+              <th>장비 ID</th>
+              <th>온도</th>
+              <th>습도</th>
+              <th>압력</th>
+              <th>GPS</th>
+              <th>TIMESTAMP</th>
+              <th>업데이트 시간</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% logList.forEach(log => { %>
+              <tr class="log-row"
+                  data-id="<%= log.equipment_id %>"
+                  data-temp="<%= log.temperature %>"
+                  data-hum="<%= log.humidity %>"
+                  data-pres="<%= log.pressure %>"
+                  data-gps="<%= log.gps_lat %>, <%= log.gps_long %>"
+                  data-time="<%= log.timestamp %>"
+                  data-created="<%= log.created_at %>">
+                <td><%= log.equipment_id %></td>
+                <td><%= log.temperature %></td>
+                <td><%= log.humidity %></td>
+                <td><%= log.pressure %></td>
+                <td><%= log.gps_lat %>, <%= log.gps_long %></td>
+                <td><%= log.timestamp %></td>
+                <td><%= log.created_at %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="card-body p-0 pb-2">
-      <table id="logTable" class="table table-striped table-bordered table-hover display">
-        <thead class="table-dark">
-          <tr>
-            <th class="minw-200px">시간</th>
-            <th class="minw-150px">장비</th>
-            <th class="minw-200px">온도</th>
-            <th class="minw-150px">습도</th>
-            <th class="minw-150px">압력</th>
-            <th class="minw-150px">GPS</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% logList.forEach(log => { %>
-          <tr>
-            <td><%= new Date(log.created_at).toLocaleString() %></td>
-            <td><%= log.model_name %></td>
-            <td><%= log.temperature %>°C</td>
-            <td><%= log.humidity %>%</td>
-            <td><%= log.pressure %> hPa</td>
-            <td><%= log.gps_lat %>, <%= log.gps_long %></td>
-          </tr>
-        <% }) %>
-        </tbody>
-      </table>
+  </div>
+
+  <!-- 상세 정보 영역 -->
+  <div class="col-lg-3">
+    <div class="position-sticky" style="top: 80px;">
+      <div class="card">
+        <div class="card-header">
+          <h6 class="mb-0">상세 정보</h6>
+        </div>
+        <div id="map" style="height: 300px;"></div>
+        <table class="table table-bordered mt-3">
+          <tbody>
+            <tr><th>ID</th><td id="detail-id">-</td></tr>
+            <tr><th>온도</th><td id="detail-temp">-</td></tr>
+            <tr><th>습도</th><td id="detail-hum">-</td></tr>
+            <tr><th>압력</th><td id="detail-pres">-</td></tr>
+            <tr><th>GPS</th><td id="detail-gps">-</td></tr>
+            <tr><th>시간</th><td id="detail-time">-</td></tr>
+            <tr><th>수신 시간</th><td id="detail-created">-</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
