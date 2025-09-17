@@ -13,7 +13,7 @@ $(document).ready(function () {
       zeroRecords: "일치하는 항목 없음"
     },
     "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ],
-    "order": [[0, 'desc']], // Sorts the first column (index 0) in ascending order
+    "order": [[6, 'desc']], // Sorts the first column (index 0) in ascending order
     "pageLength": 25// Show 50 records per page initially
   });
 
