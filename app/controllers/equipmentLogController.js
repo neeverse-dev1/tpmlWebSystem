@@ -11,7 +11,7 @@ exports.renderLogPage = async (req, res) => {
   const formattedList = logList.map(log => {
     return {
       equipment_id: log.equipment_id,
-      temperature: log.model_name,
+      temperature: log.temperature,
       humidity: log.humidity,
       pressure: log.pressure,
       gps_lat: log.gps_lat,
