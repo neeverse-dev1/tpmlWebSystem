@@ -35,6 +35,8 @@ const statusRoutes = require('./app/routes/status');
 app.use('/status', statusRoutes);
 
 // API
+// app.js 또는 routes/index.js
+app.use('/api/dashboard', require('./app/api/dashboard-grid'));
 app.use('/api/equipment', require('./app/api/equipmentData'));
 app.use('/api/status', require('./app/routes/status'));
 
